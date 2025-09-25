@@ -21,10 +21,10 @@ from django.urls import path
 numbers = [2, 1]
 
 def view(request):
-    numbers.append(sum(numbers[-2:])  # Global state?
-    return HttpResponse(", ".join(numbers))
+    numbers.append(sum(numbers[-2:]))  # Global state?
+    return HttpResponse(", ".join(str(n) for n in numbers))
 
 urlpatterns = [
+    path('', view),
     path('admin/', admin.site.urls),
-    path('/', view),
 ]
